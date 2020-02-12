@@ -1,0 +1,9 @@
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#customized-dialog-title{
+    align-self: center;
+}

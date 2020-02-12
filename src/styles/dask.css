@@ -1,0 +1,32 @@
+.aside{
+    display: flex;
+    justify-content: center;
+}
+
+#upcoming{
+    display:flex;
+    flex-direction: column;
+}
+
+.date h4 {
+    width: 30px;
+    height: 37px;
+    text-align: left;
+    font: Medium 30px/37px Montserrat;
+    letter-spacing: 0;
+    color: #537FFF;
+}
+
+.date p {
+    width: 25px;
+    height: 18px;
+    text-align: left;
+    font: Medium 15px/18px Roboto;
+    letter-spacing: 0;
+    color: #537FFF;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}

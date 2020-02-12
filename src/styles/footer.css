@@ -1,0 +1,28 @@
+#footer{
+    display: flex;
+    flex-direction: row;
+    padding:20px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items:center;
+    
+}
+
+#categories{
+    display: flex;
+    flex-direction: row;
+    /* align-self: flex-start; */
+    justify-content: space-between;
+    padding-left:50px;
+}
+
+.footer-right {
+    align-self: flex-end;
+    margin-left:auto;
+    align-self: flex-end;
+  }
+
+  .icons > img {
+      padding-left: 5px;
+  }
+
