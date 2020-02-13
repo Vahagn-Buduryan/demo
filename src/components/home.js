@@ -97,14 +97,15 @@ function Home () {
                   text={new3.text}
                 />
               </section>
-              <h2>Articles</h2>
               <section id="articles">
+               <h2>Articles</h2>
                 <SingleLineGridList
                 cols={content.cols}
                 width={content.width}                
                 />
               </section>
               <section id="blog">
+                <h2>Blog</h2>
               <SingleLineGridList
                 cols={content.cols}
                 width={content.width}
@@ -112,6 +113,7 @@ function Home () {
               </section>
             </div>
           <section id="videos">
+          <h2>Videos</h2>
             <SingleLineGridList
               cols={video.cols}
               width={video.width}

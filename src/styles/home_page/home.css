@@ -45,9 +45,12 @@
 
 
 #news{
-  /* margin-left: 360px; */
   justify-content: space-between;
   flex-wrap: nowrap;
+}
+
+ .MuiFormControl-marginDense{
+  background:transparent;
 }
 
 #news > div {
@@ -73,11 +76,23 @@ h2{
 @media (min-width: 600px) and (max-width: 1366px) {
   .aside { flex: 1 0 0; }
   .search { width:50px; }
-  #news{margin-left: 25px;padding:25px 0 25px}
-  #articles{margin-left: 25px;padding:25px 0 25px}
-  #blog{margin-left: 25px;padding:25px 0 25px}
-  #videos{margin-left: 25px;padding:25px 0 25px}
+  #news{padding:25px 0 25px}
+  #articles{padding:25px 0 25px;margin-left:25px}
+  #blog{padding:25px 0 25px;margin-left:25px}
+  #videos{padding:25px 0 25px;margin-left:25px}
   #news > div {width: 210px;height: 210px;}
+  .search{margin-top: 25px;}
+}
+
+@media (min-width: 1500px)  {
+  .aside { flex: 1 0 0; }
+  .search { width:50px; }
+  .main{margin-left: 360px;}
+  #news{padding:25px 0 25px}
+  #articles{padding:25px 0 25px;margin-left:25px}
+  #blog{padding:25px 0 25px;margin-left:25px}
+  #videos{padding:25px 0 25px;margin-left:25px}
+  #news > div {width: 300px;height: 300px;}
   .search{margin-top: 25px;}
 }
 

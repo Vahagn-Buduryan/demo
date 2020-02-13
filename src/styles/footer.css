@@ -16,6 +16,11 @@
     padding-left:50px;
 }
 
+#categories > div {
+    padding: 25px 25px 25px 0
+}
+
+
 .footer-right {
     align-self: flex-end;
     margin-left:auto;

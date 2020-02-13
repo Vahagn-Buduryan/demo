@@ -5,17 +5,18 @@ import User from './components/user';
 import Login from './components/login';
 import Signup from './components/signup';
 import './styles/App.css';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import InputLabel from '@material-ui/core/InputLabel';
 import Logo from './styles/logo_d.png';
 
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1.6),
     minWidth: 120,
   },
   selectEmpty: {
@@ -32,7 +33,7 @@ function App () {
   const [showRegister,setRegister]=useState(false);
 
   const classes = useStyles();
-  const [lng, setLng] = React.useState('');
+  const [lng, setLng] = useState('Eng');
 
 
 
@@ -51,16 +52,20 @@ function App () {
             <li><Link to={'/'} className="nav-link"> Events </Link></li>
             <li><Link to={'/User'} className="nav-link">User</Link></li>
             <FormControl className={classes.formControl}>
-              <InputLabel id="simple-select-label">Eng</InputLabel>
               <Select
+                disableUnderline
+                style={{width:'77px'}}
                 labelId="simple-select-label"
                 id="simple-select"
                 value={lng}
+                defaultValue = {'Eng'}
                 onChange={handleChange}
+                className={"select"}
+                IconComponent={()=> <ExpandMoreRoundedIcon/>}
               >
-          <MenuItem value={'EN'}>Eng</MenuItem>
-          <MenuItem value={"RUS"}>Rus</MenuItem>
-          <MenuItem value={'AM'}>AM</MenuItem>
+          <MenuItem selected value={'ENG'} style={{fontSize:'16px'}}>Eng</MenuItem>
+          <MenuItem value={"RUS"} style={{fontSize:'16px'}}>Rus</MenuItem>
+          <MenuItem value={'AM'} style={{fontSize:'16px'}}>AM</MenuItem>
         </Select>
       </FormControl>
             <button onClick={()=>toggle===false?setToggle(true):setToggle(false)} className={'login'}>Log in</button>
