@@ -75,12 +75,9 @@ const tileData = [ {
 
 export default function SingleLineGridList(props) {
   let myRef =useRef(0);
-
-const scrollRight = () => myRef.current.focus();
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <button onClick={scrollRight}>></button>
       <GridList className={classes.gridList} cols={props.cols} style={{width:props.width,height:'331px'}}>
         {tileData.map(tile => (
           <GridListTile key={tile.img} style={{height:"282px"}} ref={myRef}>

@@ -46,7 +46,7 @@ function App () {
     <Router>
         <div  className={'header'}>
           <nav className="navbar navbar-expand-lg navbar-light bg-ligh">
-          <img src={Logo} id='logo' alt=''logo/>
+          <img src={Logo} id='logo' alt='logo'logo/>
           <ul className="navbar-nav mr-auto">
             <li><Link to={'/'} className="nav-link"> Events </Link></li>
             <li><Link to={'/User'} className="nav-link">User</Link></li>

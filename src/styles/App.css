@@ -13,8 +13,8 @@
   margin-left:35%;
 }
 
-img{
-  margin-left: 12%;
+#logo{
+  margin-left: 25px;
 }
 
 .login {
@@ -30,6 +30,8 @@ img{
   width: 130px;
 height: 40px;
 background: #537FFF 0% 0% no-repeat padding-box;
+border-style:none;
+    border-color: none;
 border-radius: 25px;
 text-align: center;
 font: Medium 16px/19px Montserrat;

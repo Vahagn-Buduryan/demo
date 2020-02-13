@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, withRouter ,Redirect} from 'react-router-dom';
+import { Link, withRouter,useHistory } from 'react-router-dom';
 import firebase from '../firebase';
 import '../styles/signup.css';
 import { withStyles } from '@material-ui/core/styles';
@@ -17,7 +17,6 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 
-import User from "./user"
 
 const styles = theme => ({
   root: {
@@ -62,6 +61,10 @@ const DialogContent = withStyles(theme => ({
 
 
 function Register(props) {
+
+	const history= useHistory();
+
+	let toLogin = () => history.push('/login')
 	
 	const [values, setValues] = React.useState({
 		
@@ -90,7 +93,6 @@ function Register(props) {
 
 	if(user===true){
 		return <Link  to ={`/user/${name}`}
-		 component={User}
 		/>
 	}
 
@@ -145,14 +147,14 @@ function Register(props) {
           			</Button>
 					  </form>
 					  </DialogContent>
-					  <Link to={'/Login'} className="nav-link">Allready have an account?</Link>
+					  <Link onClick={toLogin} className="nav-link">Allready have an account?</Link>
 					  </Dialog>
 	)
 
 	async function onRegister() {
 		try {
 			await firebase.register(name, email, password);
-			props.history.replace('/User');
+			props.history.replace('/home');
 			setUser(true);
 		} catch(error) {
 			alert(error.message);

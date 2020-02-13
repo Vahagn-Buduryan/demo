@@ -3,17 +3,13 @@ import React,{useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
-import { Link, withRouter ,Redirect} from 'react-router-dom';
+import { Link, withRouter ,useHistory} from 'react-router-dom';
 import firebase from '../firebase';
 import '../styles/signup.css';
-import { withStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
+// import Button from '@material-ui/core/Button';;
 // import MuiDialogActions from '@material-ui/core/DialogActions';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -23,6 +19,11 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import '../styles/login.css'
 
 function  Login(props) {
+
+  const history=useHistory()
+
+  let toRegister = () =>  history.push('./signup');
+
   const [open, setOpen] = useState(true);
 
   const [email, setEmail] = useState('');
@@ -34,9 +35,9 @@ function  Login(props) {
 	  });
 
 
-	  const handleMouseDownPassword = event => {
-		event.preventDefault();
-	  };
+	//   const handleMouseDownPassword = event => {
+	// 	event.preventDefault();
+	//   };
 
 	  const handleClickShowPassword = () => {
 		setValues({ ...values, showPassword: !values.showPassword });
@@ -69,7 +70,6 @@ function  Login(props) {
 								<IconButton
 								aria-label="toggle password visibility"
 								onClick={handleClickShowPassword}
-								onMouseDown={handleMouseDownPassword}
 								edge="end"
 								>
 								{values.showPassword ? <Visibility /> : <VisibilityOff />}
@@ -89,13 +89,13 @@ function  Login(props) {
           			</Button>
 					  </form>
 					  </DialogContent>
-					  <Link  to={'/signup'} className="nav-link">Whant to register?</Link>
+					  <button  onClick={toRegister} className="nav-link">Whant to register?</button>
 					  </Dialog>
   );
   async function login() {
 	try {
 		await firebase.login(email, password);
-		props.history.replace('/User');
+		props.history.push('/user');
 	} catch(error) {
 		alert(error.message)
 	}
@@ -104,4 +104,4 @@ function  Login(props) {
 
 }
 
-export default withRouter(Login);
+export default Login;
