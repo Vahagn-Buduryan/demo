@@ -49,10 +49,10 @@ function User() {
             <img src={main_post} alt={'main'} className={'main_post'}/>
             <h2>Բիզնես ստարտ, Երկօրյա դասընթաց</h2>
             <Stars/>
-            <div id="sub_manu" className={'row'}>
+            <div id="sub-menu" className={'row'}>
               <h3>About Event</h3>
               <h3>Lectures</h3>
-              <h3>Event Vanue</h3>
+              <h3 style={{color:'#537FFF'}}>Event Vanue</h3>
             </div>
             <div id="map">
                 <GoogleApiWrapper className={'map'}/>
@@ -66,7 +66,7 @@ function User() {
             </div>
             <div id="going">
             <h3>120 Going</h3>
-              <AvatarGroup>
+              <AvatarGroup className='avatars'>
                 <Avatar alt="Remy Sharp" src="https://ozgrozer.github.io/100k-faces/0/8/008096.jpg" />
                 <Avatar alt="Travis Howard" src="https://ozgrozer.github.io/100k-faces/0/8/008091.jpg"/>
                 <Avatar alt="Cindy Baker" src="https://ozgrozer.github.io/100k-faces/0/8/008097.jpg" />

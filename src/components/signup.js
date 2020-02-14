@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, withRouter,useHistory } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import firebase from '../firebase';
 import '../styles/signup.css';
 import { withStyles } from '@material-ui/core/styles';
@@ -60,26 +60,14 @@ const DialogContent = withStyles(theme => ({
 
 
 
-function Register(props) {
-
-	const history= useHistory();
-
-	let toLogin = () => history.push('/login')
+function Register({isOpen, handleClose, onLogin, history}) {
 	
 	const [values, setValues] = React.useState({
 		
 		showPassword: false,
 	  });
 
-	const [open, setOpen] = React.useState(true);
 
-	const handleClose = () => {
-		setOpen(false);
-	  };
-	
-	  const handleMouseDownPassword = event => {
-		event.preventDefault();
-	  };
 
 	  const handleClickShowPassword = () => {
 		setValues({ ...values, showPassword: !values.showPassword });
@@ -97,7 +85,7 @@ function Register(props) {
 	}
 
 	return (
-		<Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+		<Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={isOpen}>
 			<DialogTitle id="customized-dialog-title" onClose={handleClose}>
 				Registration
 			</DialogTitle>
@@ -119,7 +107,6 @@ function Register(props) {
 								<IconButton
 								aria-label="toggle password visibility"
 								onClick={handleClickShowPassword}
-								onMouseDown={handleMouseDownPassword}
 								edge="end"
 								>
 								{values.showPassword ? <Visibility /> : <VisibilityOff />}
@@ -147,14 +134,14 @@ function Register(props) {
           			</Button>
 					  </form>
 					  </DialogContent>
-					  <Link onClick={toLogin} className="nav-link">Allready have an account?</Link>
+					  <button onClick={onLogin} className="nav-link">Allready have an account?</button>
 					  </Dialog>
 	)
 
 	async function onRegister() {
 		try {
 			await firebase.register(name, email, password);
-			props.history.replace('/home');
+			history.push('/user');
 			setUser(true);
 		} catch(error) {
 			alert(error.message);

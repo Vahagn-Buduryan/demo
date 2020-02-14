@@ -2,15 +2,14 @@ import React , {useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-// import GridListTileBar from '@material-ui/core/GridListTileBar';
-// import IconButton from '@material-ui/core/IconButton';
-// import StarBorderIcon from '@material-ui/icons/StarBorder';
-// import tileData from './tileData';
+
 
 
 import Card from "./home_card";
 
-import Image from '../styles/home_page/news1.png'
+import Image from '../styles/home_page/news1.png';
+import Arrow from '../styles/home_page/arrow.svg';
+
 
 const new1 = {
     src: Image,
@@ -33,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
     maxWidth : '951px',
+    overflow:'hidden'
   },
   title: {
     color: theme.palette.primary.light,
@@ -41,6 +41,13 @@ const useStyles = makeStyles(theme => ({
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
+
+  bContainer:{
+    display:'flex',
+    alignItems:'center',
+  },
+
+
 }));
 
 const tileData = [ {
@@ -74,13 +81,17 @@ const tileData = [ {
 
 
 export default function SingleLineGridList(props) {
-  let myRef =useRef(0);
+  let myRef =useRef();
   const classes = useStyles();
+
+  
   return (
+    <div className={classes.bContainer}>
+    <img src={Arrow} alt={'left'} onClick={ ()=> {myRef.current.scrollLeft-=20}} style={{transform: 'scaleX(-1)'}}/>
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={props.cols} style={{width:props.width,height:'331px'}}>
-        {tileData.map(tile => (
-          <GridListTile key={tile.img} style={{height:"282px"}} ref={myRef}>
+      <GridList ref={myRef} className={classes.gridList} cols={props.cols} style={{width:props.width,height:'331px'}}>
+        {tileData.map((tile, key) => (
+          <GridListTile key={key} style={{height:"282px"}}>
             <Card 
     height={new1.height}
     src = {new1.src}
@@ -90,6 +101,8 @@ export default function SingleLineGridList(props) {
           </GridListTile>
         ))}
       </GridList>
+    </div>
+    <img src={Arrow} alt={'right'} onClick={ ()=> {myRef.current.scrollLeft+=20}}/>
     </div>
   );
 }

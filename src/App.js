@@ -6,7 +6,6 @@ import Login from './components/login';
 import Signup from './components/signup';
 import './styles/App.css';
 import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
-import InputLabel from '@material-ui/core/InputLabel';
 import Logo from './styles/logo_d.png';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -74,18 +73,23 @@ function App () {
           </nav>
           <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/user' component={User} />
-              <Route path='/login' component={Login} />
-              <Route path='/signup' component={Signup}/>
+              <Route exact path='/user' component={User} />
           </Switch>
         </div>
       </Router>
-       {toggle===true?
-        <Login/>:null 
-       }
-         {showRegister===true?
-        <Signup/>:null 
-       }
+       
+        <Login 
+        isOpen={toggle} 
+        onRegister={ ()=> {setToggle(false); setRegister(true)}}
+         handleClose={ ()=> setToggle(false)}
+          />
+        
+        <Signup 
+          isOpen={showRegister} 
+          onLogin={ () => {setRegister(false);setToggle(true)}}
+          handleClose={ ()=> setRegister(false)}
+        /> 
+       
       </div>
     );
   }

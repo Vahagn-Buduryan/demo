@@ -6,7 +6,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
-import { Link, withRouter ,useHistory} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 import '../styles/signup.css';
 // import Button from '@material-ui/core/Button';;
@@ -18,13 +18,12 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 import '../styles/login.css'
 
-function  Login(props) {
+function  Login({isOpen,onRegister,handleClose,history}) {
 
-  const history=useHistory()
+//   const history=useHistory()
 
-  let toRegister = () =>  history.push('./signup');
+//   let toRegister = () =>  history.push('./signup');
 
-  const [open, setOpen] = useState(true);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,14 +42,12 @@ function  Login(props) {
 		setValues({ ...values, showPassword: !values.showPassword });
 	  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+ 
 
   
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+    <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={isOpen}>
 			<DialogTitle id="customized-dialog-title" onClose={handleClose}>
 				Log in
 			</DialogTitle>
@@ -89,13 +86,13 @@ function  Login(props) {
           			</Button>
 					  </form>
 					  </DialogContent>
-					  <button  onClick={toRegister} className="nav-link">Whant to register?</button>
+					  <a onClick={onRegister} className="nav-link">Whant to register?</a>
 					  </Dialog>
   );
   async function login() {
 	try {
 		await firebase.login(email, password);
-		props.history.push('/user');
+		history.push('/user');
 	} catch(error) {
 		alert(error.message)
 	}
